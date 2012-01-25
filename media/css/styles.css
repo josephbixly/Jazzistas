@@ -1,0 +1,80 @@
+#header{
+	margin-top: 10px;
+	margin: 0px auto;
+	width: 1400px;
+	height: 849px;
+	font-size: 15px;
+	font-family: Palatino Linotype, Trebuchet MS, sans-serif;
+	background-image: url(../img/wallpaper2.jpeg);
+}
+
+#header p{
+	font-family: Palatino Linotype, Trebuchet MS, sans-serif;
+	font-size: 12px;
+}
+
+#header br{
+	margin-top: 40px;
+}
+
+#navcontainer{
+	margin-left: auto;
+	margin-right: auto;
+	width: 850px;
+}
+
+#navcontainer ul{
+	padding: 5px;
+	list-style-type: none;
+	font-size: 15px;
+	background-color: white;
+	opacity: 0.4;
+	font-family: Palatino Linotype, Book Antiqua, Palatino, serif;
+}
+
+#navcontainer ul li { display: inline; }
+
+#navcontainer ul li a{
+	text-decoration: none;
+	padding: .2em 1em;
+	color: #382D2C;
+}
+
+#navcontainer ul li a:hover{
+	color: #800000;
+	background-color: #369;
+}
+
+#sitebody{
+	margin-left: auto;
+	margin-right: auto;
+	width: 950px;
+	height: 350px;
+	background-color: white;
+	font-family: Georgia;
+	opacity: 0.5;
+	border
+}
+
+
+#sitebody p{
+	font-size: 15px;
+}
+
+#sitebody p#error{
+	font-size: 15px;
+	color: Red;
+}
+
+#sitebody br{
+	margin-top: 7px;
+}
+
+
+#footer{
+	width: 800px;
+	height: 30px;
+	background-color:black;
+	opacity: 0.5;
+}
+

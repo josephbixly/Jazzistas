@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Jazzistas de Davao Forum Page{% endblock %}
+{% block sitebody %}
+	<br/>
+	<table>
+		{% for f in forum %}
+			<tr bgcolor="#566D7E">
+				<td><a href="{{f.slug}}" style="text-decoration:none"><font color="#382D2C">{{ f }}</font></a></td>
+			</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

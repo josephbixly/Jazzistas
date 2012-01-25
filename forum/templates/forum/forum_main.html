@@ -1,1 +1,24 @@
+{% extends "base.html" %}
 {% block title %}Jazzistas de Davao Forum Page{% endblock %}
+{% block sitebody %}
+	<br/>
+	<table>
+		{% for t in types %}
+			<tr bgcolor="#566D7E">
+				<td colspan=4><center><a href="{{t.slug}}" style="text-decoration:none"><font color="#880000">{{ t }}</font></a></center></td>
+			</tr>
+			<tr>
+				<td width="250"><center>Forum</center></td>
+				<td width="100"><center>Threads</center></td>
+				<td width="100"><center>Posts</center></td>
+				<td width="200"><center>Last Post</center></td>
+			</tr>
+			{% for s in subjects %}
+				{% if s.type == t.id %}
+					
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	</table>
+{% endblock %}
+

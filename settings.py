@@ -48,8 +48,8 @@ USE_I18N = True
 # calendars according to the current locale
 USE_L10N = True
 
-MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media/')
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static/')
+MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'

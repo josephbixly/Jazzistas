@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
-	url(r'^$', index),
+    url(r'^$', 'forum.views.index'),
+    url(r'(P<forum_slug>w+)', 'forum.views.forum_topic'),
 )
+
