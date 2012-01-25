@@ -7,20 +7,25 @@ class Subject(models.Model):
     title = models.CharField(max_length=50)
     status = models.CharField(max_length=50, choices=constants.STATUS)
     type = models.ForeignKey('Type')
-    slug = models.SlugField(editable=False)
     posted_by = models.ForeignKey(User)
     posted_date = models.DateField(auto_now_add=True)
+    
+    def save(self):
+        self.slug = '%s' % (slugify(self.name))
+        super(Subject, self).save()
 
     def __unicode__(self):
         return self.title
+    
+    def postcount(self):
+        count = 0
+        for topic in self.topic_set.all():
+            count += topic.ForumPost_set.count
+        return count
 
 class Type(models.Model):
     name = models.CharField(max_length=50)
     access_level = models.CharField(max_length=50, choices=constants.ACCESS_LEVEL)
-    
-    def save(self):
-        self.slug = '%s' % (slugify(self.name))
-        super(Type, self).save()
     
     def __unicode__(self):
         return self.name

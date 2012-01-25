@@ -3,9 +3,9 @@
 {% block sitebody %}
 	<br/>
 	<table>
-		{% for t in types %}
+		{% for type in types %}
 			<tr bgcolor="#566D7E">
-				<td colspan=4><center><a href="{{t.slug}}" style="text-decoration:none"><font color="#880000">{{ t }}</font></a></center></td>
+				<td colspan=4><center><font color="#880000">{{ type }}</font></a></center></td>
 			</tr>
 			<tr>
 				<td width="250"><center>Forum</center></td>
@@ -13,10 +13,12 @@
 				<td width="100"><center>Posts</center></td>
 				<td width="200"><center>Last Post</center></td>
 			</tr>
-			{% for s in subjects %}
-				{% if s.type == t.id %}
-					
-				{% endif %}
+			{% for subject in type.subject_set.all %}
+				<tr>
+					<td width="250"><a href="{{subject.slug}}" style="text-decoration:none"><font color="#880000">{{ subject }}</font></td>
+					<td width="100" style="text-align:center;">{{ subject.topic_set.all.count }}</td>
+					<td width="100" style="text-align:center;">{{ subject.postcount }}</td>
+				</tr>
 			{% endfor %}
 		{% endfor %}
 	</table>

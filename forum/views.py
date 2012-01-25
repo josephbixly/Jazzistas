@@ -5,8 +5,7 @@ from django.template import RequestContext
 
 def index(request):
 	types = Type.objects.all()
-	subjects = Subject.objects.all()
-	return render_to_response('forum/forum_main.html',{'types': types, 'subjects': subjects}, context_instance = RequestContext(request))
+	return render_to_response('forum/forum_main.html',{'types': types}, context_instance = RequestContext(request))
 	
 def forum_topic(request):
 	topic = Topic.objects.all()
