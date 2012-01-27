@@ -8,7 +8,7 @@ class Profile(models.Model):
     nickname = models.CharField(max_length=50)
     gender = models.CharField(max_length=50, choices=constants.GENDER)
     type = models.CharField(max_length=50, choices=constants.USER_TYPES)
-    picture = models.ImageField(upload_to = "%s/profile_pictures" % (constants.UPLOAD_TO))
+    picture = models.ImageField(upload_to = "%s/profile_pictures" % (constants.UPLOAD_TO), blank=True)
     signature = models.TextField(null=True, blank=True)
     
     def __unicode__(self):

@@ -9,19 +9,25 @@ class Subject(models.Model):
     type = models.ForeignKey('Type')
     posted_by = models.ForeignKey(User)
     posted_date = models.DateField(auto_now_add=True)
+    slug = models.SlugField(blank=True, null=True)
     
     def save(self):
-        self.slug = '%s' % (slugify(self.name))
+        self.slug = '%s' % (slugify(self.title))
         super(Subject, self).save()
 
     def __unicode__(self):
         return self.title
     
     def postcount(self):
-        count = 0
-        for topic in self.topic_set.all():
-            count += topic.ForumPost_set.count
+        count = ForumPost.objects.filter(topic__subject=self).count()
         return count
+    
+    def lastpostdate(self):
+		try:
+			lastpost = Topic.objects.filter(topic__subject=self).order_by("posted_date")[0]
+			return lastpost
+		except:
+			return None
 
 class Type(models.Model):
     name = models.CharField(max_length=50)
@@ -35,11 +41,21 @@ class Topic(models.Model):
     status = models.CharField(max_length=50, choices=constants.STATUS)
     subject = models.ForeignKey(Subject)
     posted_by = models.ForeignKey(User)
-    slug = models.SlugField(editable=False)
+    slug = models.SlugField(blank=True, null=True)
     posted_date = models.DateField(auto_now_add=True)
+    num_views = models.IntegerField(default=0)
+    
+    def lastpostdate(self):
+		try:
+			lastpost = ForumPost.objects.filter(forum__topic=self).order_by("posted_date")[0]
+			return lastpost
+		except:
+			return None
     
     def save(self):
-        self.slug = '%i-%s' % (self.id, slugify(self.title))
+        self.slug = '%s' % (slugify(self.title))
+        super(Topic, self).save()
+        self.slug = '%s-%s' % (self.id, slugify(self.title))
         super(Topic, self).save()
     
     def __unicode__(self):
