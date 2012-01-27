@@ -53,8 +53,6 @@ class Topic(models.Model):
 			return None
     
     def save(self):
-        self.slug = '%s' % (slugify(self.title))
-        super(Topic, self).save()
         self.slug = '%s-%s' % (self.id, slugify(self.title))
         super(Topic, self).save()
     
