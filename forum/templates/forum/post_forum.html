@@ -1,0 +1,14 @@
+{% extends "base3.html" %}
+{% block title %}Post Replies{% endblock %}
+{% block postreply %}
+	<form action="" method="POST">{% csrf_token %}
+		<table>
+			<tr>
+				<td>Message:</td><td>{{ form.message }}</td>
+			</tr>
+			<tr>
+				<td></td><td><input type="submit" value="Post Reply"/></td>
+			</tr>
+		</table>
+	</form>
+{% endblock %}

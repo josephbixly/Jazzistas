@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 {% block title %}Jazzistas de Davao Forum Page{% endblock %}
+{% block titlelogin %}
+	JAZZISTAS DE DAVAO FORUM
+	{% if profile %}
+		<p>Welcome {{ profile.complete_name }}&nbsp;&nbsp;&nbsp;&nbsp;<a href='/forum/logout/' style='text-decoration:none;'>Log-out</a></p>
+	{% else %}
+		<form method="POST" action="/forum/">{% csrf_token %}
+			<label>Username:</label><input type="text" name="username">
+			<label>Password:</label><input type="password" name="password">
+			<input type="submit" value="Log-in">
+			{% if error %}
+			<font color="red" size="3">{{ error }}</font>
+			{% endif %}
+		</form>
+	{% endif %}
+{% endblock %}
 {% block sitebody %}
 	<table>
 		{% for type in types %}

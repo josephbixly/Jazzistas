@@ -1,4 +1,45 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% block title %}Jazzistas de Davao Forum Page{% endblock %}
-{% block sitebody %}
+{% block postbody %}
+	<div class="container">		
+		<table>
+			{% if topics %}
+			<tr>
+				<td id="p_date" colspan=2>{{ topics.posted_date }}</td>
+			</tr>
+			{% endif %}
+			<tr>
+				<td id="memberprofile" class="span-8">
+				{% if t_posted_by %}
+					{{ t_posted_by.complete_name }}<br/>
+					<font color="white" size="2">{{ t_posted_by.type }}</font><br/>
+					{{ t_posted_by.picture }}
+				{% endif %}
+				</td>
+				<td id="messagecontent" class="span-16 last">
+				{% if topics %}
+					{{ topics.message }}
+				{% endif %}
+				</td>
+			</tr>
+			{% for post in posts %}
+			<tr>
+				<td id="p_date" colspan=2>{{ post.posted_date }}</td>
+			</tr>
+			<tr>
+				<td id="memberprofile" class="span-8">
+					{{ post.posted_by.get_profile.complete_name }}<br/>
+					<font color="white" size="2">{{ post.posted_by.get_profile.type }}</font><br/>
+					{{ post.posted_by.get_profile.picture }}	
+				</td>
+				<td id="messagecontent" class="span-16 last">
+					{{ post.message|safe }}
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% if profile %}
+		<a href="{% url forum.views.post_replies subject_slug topic_slug %}"><img src="{{MEDIA_URL}}/img/reply.gif"></a>
+		{% endif %}
+	</div>
 {% endblock %}

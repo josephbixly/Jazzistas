@@ -44,6 +44,7 @@ class Topic(models.Model):
     slug = models.SlugField(blank=True, null=True)
     posted_date = models.DateField(auto_now_add=True)
     num_views = models.IntegerField(default=0)
+    message = models.TextField()
     
     def lastpostdate(self):
 		try:
@@ -53,6 +54,8 @@ class Topic(models.Model):
 			return None
     
     def save(self):
+        self.slug = '%s' % (slugify(self.title))
+        super(Topic, self).save()
         self.slug = '%s-%s' % (self.id, slugify(self.title))
         super(Topic, self).save()
     
@@ -64,7 +67,7 @@ class ForumPost(models.Model):
     topic = models.ForeignKey(Topic)
     posted_by = models.ForeignKey(User)
     posted_date = models.DateField(auto_now_add=True)
-    
+		
     def __unicode__(self):
         return "%s %s %s" % (self.topic.title, self.posted_by, self.posted_date)
         

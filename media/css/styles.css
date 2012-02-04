@@ -49,11 +49,9 @@
 	margin-left: auto;
 	margin-right: auto;
 	width: 950px;
-	height: 350px;
 	background-color: white;
 	font-family: Georgia;
 	opacity: 0.9;
-	border
 }
 
 
@@ -78,3 +76,71 @@
 	opacity: 0.5;
 }
 
+#memberprofile{
+	background-color: black;
+	color: #FFA500;
+	text-align: center;
+	font-size: large;
+	font-family: Lucida Console, Verdana, Arial;
+}
+
+#messagecontent{
+	color: black;
+	text-align: center;
+	font-size: small;
+	font-family: Verdana, Arial, Lucida Console;
+}
+
+#postbody{
+	margin-left: auto;
+	margin-right: auto;
+	width: 950px;
+	height: relative;
+	background-color: white;
+	font-family: Georgia;
+	opacity: 0.9;
+}
+
+#p_date{
+	width: 950px;
+	border-style: solid; 
+	border-width: medium;
+	border-color: black;
+}
+
+#postreply{
+	margin-left: auto;
+	margin-right: auto;
+	width: 950px;
+	background-color: white;
+	font-family: Georgia;
+	opacity: 0.9;
+	color: white;
+}
+
+#titlelogin{
+	width: 950px;
+	height: 80px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+	opacity: 0.6;
+	color: orange;
+	font-size: 27px;
+	font-family: Serif, Georgia, Lucida;
+}
+
+#titlelogin p{
+	color: red;
+	font-size: 15px;
+	font-family: Serif, Georgia, Lucida;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+#titlelogin label{
+	color: black;
+	font-size: 15px;
+	font-family: Serif, Georgia, Lucida;
+}
