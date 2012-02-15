@@ -7,7 +7,7 @@
 {% endblock %}
 {% block li5 %}
 	{% if profile %}
-	<font color="red">&nbsp;&nbsp;&nbsp;{{ profile.user.username }}</font>
+	<a href="/users/logout"><span>&nbsp;&nbsp;&nbsp;LOGOUT&nbsp;<font color="red">{{ profile.user.username }}</font></span></a>
 	{% else %}
 	<a href="/users/login"><span>&nbsp;&nbsp;&nbsp;LOGIN/SIGNUP</span></a>
 	{% endif %}

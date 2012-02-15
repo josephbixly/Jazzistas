@@ -1,18 +1,16 @@
-{% extends "base.html" %}
+{% extends "mainbase.html" %}
 {% block title %}
 	Jazzistas de Davao Gallery
 {% endblock %}
-{% block titlelogin %}
-	JAZZISTAS DE DAVAO ARCHIVES and GALLERIES
+{% block li5 %}
 	{% if profile %}
-	<p>Welcome {{ profile.complete_name }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="" style="text-decoration:none;">Log-out</a>&nbsp;&nbsp;
-	<a href="/album/view/" style="text-decoration:none; font-size:15">View all galleries</a>&nbsp;&nbsp;&nbsp;
-	<a href="/album/add/" style="text-decoration:none; font-size:15">Add new gallery</a>
-	</p>
+	<a href="/users/logout"><span>&nbsp;&nbsp;&nbsp;LOGOUT&nbsp;<font color="red">{{ profile.user.username }}</font></span></a>
 	{% else %}
-	<p>You are currently not logged in.&nbsp;&nbsp;&nbsp;<a href="" style="text-decoration:none;">Log-in</a>&nbsp;&nbsp;
-	<a href="/album/view/" style="text-decoration:none; font-size:15">View all galleries</a>&nbsp;&nbsp;&nbsp;
-	<a href="/album/add/" style="text-decoration:none; font-size:15">Add new gallery</a></p>
+	<a href="/users/login"><span>&nbsp;&nbsp;&nbsp;LOGIN/SIGNUP</span></a>
 	{% endif %}
-	<br/>
+{% endblock %}
+{% block contsWrap %}
+	<div id="forumcontent">
+		<a href="/album/view/" style="text-decoration:none;"></a>
+	</div>
 {% endblock %}

@@ -50,7 +50,7 @@ USE_L10N = True
 
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-
+LOGIN_URL = '/users/login/'
 MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 STATIC_URL = '/static/'

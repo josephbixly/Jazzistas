@@ -9,12 +9,12 @@
 		<form method="POST" action="">{% csrf_token %}
 			<table>
 				<tr>
-					<td><p>Username:</p></td>
-					<td>{{ form.username }}</td>
+					<td>Username:</td>
+					<td><input type="text" name="username"></td>
 				</tr>
 				<tr>
-					<td><p>Password:</p></td>
-					<td>{{ form.password }}</td>
+					<td>Password:</td>
+					<td><input type="password" name="password"></td>
 				</tr>
 				<tr>
 					<td></td>

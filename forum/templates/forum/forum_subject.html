@@ -1,36 +1,36 @@
-{% extends "base.html" %}
+{% extends "mainbase.html" %}
 {% block title %}Jazzistas de Davao Forum Page{% endblock %}
-{% block titlelogin %}
-	JAZZISTAS DE DAVAO FORUM
+{% block li3 %}<a class="active" href="/forum/"><span>FORUM</span></a>{% endblock %}
+{% block li5 %}
 	{% if profile %}
-		<p>Welcome {{ profile.complete_name }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="/forum/logout/" style="text-decoration:none;">Log-out</a></p>
+	<a href="/users/logout"><span>&nbsp;&nbsp;&nbsp;LOGOUT&nbsp;<font color="red">{{ profile.user.username }}</font></span></a>
 	{% else %}
-		<br/><a href="/forum/" style="text-decoration:none; font-size: 15">Log-in to the main page.</a>
+	<a href="/users/login"><span>&nbsp;&nbsp;&nbsp;LOGIN/SIGNUP</span></a>
 	{% endif %}
 {% endblock %}
-{% block sitebody %}
-	<table>
-		{% if subject %}
-			<tr bgcolor="#566D7E">
-				<td colspan=4 style="text-align:center;"><font color="#880000">{{ subject }}</font></a></td>
-			</tr>
-			<tr>
-				<td width="250"><center>Thread</center></td>
-				<td width="200"><center>Last Post</center></td>
-				<td width="100"><center>Replies</center></td>
-				<td width="100"><center>Views</center></td>
-			</tr>
-			{% for topic in subject.topic_set.all %}
+{% block contsWrap %}
+	<div id="forumcontent"><br/>
+		<table style="margin-left:-8px;border-style:outset;border-width:5px;">
+			{% if subject %}
 				<tr>
-					<td width="250"><a href="{% url forum.views.forum_topic subject.slug topic.slug %}" style="text-decoration:none"><font color="#880000">{{ topic }}</font></td>
-					<td width="200" style="text-align:center;">{{ topic.lastpostdate }}</td>
-					<td width="100" style="text-align:center;">{{ topic.forumpost_set.all.count }}</td>
-					<td width="100" style="text-align:center;">{{ topic.num_views }}</td>
+					<td colspan=4 style="text-align:center;"><font color="#880000">{{ subject }}</font></a></td>
 				</tr>
-			{% endfor %}
-		{% endif %}
-	</table>
-	{% if profile %}
+				<tr>
+					<td width="250"><center>Thread</center></td>
+					<td width="200"><center>Last Post</center></td>
+					<td width="100"><center>Replies</center></td>
+					<td width="100"><center>Views</center></td>
+				</tr>
+				{% for topic in subject.topic_set.all %}
+					<tr>
+						<td width="250"><a href="{% url forum.views.forum_topic subject.slug topic.slug %}" style="text-decoration:none"><font color="#880000">{{ topic }}</font></td>
+						<td width="200" style="text-align:center;">{{ topic.lastpostdate }}</td>
+						<td width="100" style="text-align:center;">{{ topic.forumpost_set.all.count }}</td>
+						<td width="100" style="text-align:center;">{{ topic.num_views }}</td>
+					</tr>
+				{% endfor %}
+			{% endif %}
+		</table>
 	<a href="{% url forum.views.newthread subject_slug %}"><img src="{{MEDIA_URL}}/img/newthread.gif"></a>
-	{% endif %}
+	</div>
 {% endblock %}

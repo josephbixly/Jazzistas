@@ -7,20 +7,50 @@
 	</head>
 	<body>
 		<div id="header">
-			<br/>
-			<div id="navcontainer">
-				<ul>
-					<li><a href="/Jazzistas/">Home</a></li>
-					<li><a href="/History/">History</a></li>
-					<li><a href="/About/">About Us</a></li>
-					<li><a href="/Contact/">Contact Us</a></li>
-					<li><a href="/Gallery/">Gallery</a></li>
-					<li><a href="/Blog/">Blog</a></li>
-					<li><a href="/Forum/">Forum</a></li>
-				</ul>
-			</div>
-			<div id="postbody">
-				{% block postbody %}{% endblock %}
+			<div id="wrapinner">
+				<div id="navcontainer">
+					<div class="span-2">
+						<ul>
+							<li>{% block li1 %}<a href="/main/"><span>HOME</span></a>{% endblock %}</li>
+						</ul>
+					</div>
+					<div class="span-4">
+						<ul>
+							<li>{% block li2 %}<a href="/album/"><span>ALBUMS/GALLERY</span></a>{% endblock %}</li>
+						</ul>
+					</div>
+					<div class="span-2">
+						<ul>
+							<li>{% block li3 %}<a href="/forum/"><span>FORUM</span></a>{% endblock %}</li>
+						</ul>
+					</div>
+					<div class="span-10">
+						<ul>
+							<li>{% block li4 %}<a href="//"><span>BLOG</span></a>{% endblock %}</li>
+						</ul>
+					</div>
+					<div class="span-2">
+						<ul>
+							<li>{% block li5 %}{% endblock %}</li>
+						</ul>
+					</div>
+				</div>
+				<div id="mainfeature">
+					<img src="/media/img/front_page_top_banner_image.jpg">
+				</div>
+				<div id="contsWrap">
+				{% block contsWrap %}
+				{% endblock %}
+					<div id="footer">
+						<p>Copyright &copy; 2011 Jazzistas de Davao</p>
+						<ul>
+							<li><a href="/main/">Home</a></li>
+							<li><a href="/main/history">History</a></li>
+							<li><a href="/main/about">About Jazzistas</a></li>
+							<li><a href="/main/contact">Contact Us</a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>

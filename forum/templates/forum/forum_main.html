@@ -1,136 +1,30 @@
-{% extends "base.html" %}
+{% extends "mainbase.html" %}
 {% block title %}Jazzistas de Davao Forum Page{% endblock %}
-{% block titlelogin %}
-	JAZZISTAS DE DAVAO FORUM
+{% block li3 %}<a class="active" href="/forum/"><span>FORUM</span></a>{% endblock %}
+{% block li5 %}
 	{% if profile %}
-		<p>Welcome {{ profile.complete_name }}&nbsp;&nbsp;&nbsp;&nbsp;<a href='/forum/logout/' style='text-decoration:none;'>Log-out</a></p>
+	<a href="/users/logout"><span>&nbsp;&nbsp;&nbsp;LOGOUT&nbsp;<font color="red">{{ profile.user.username }}</font></span></a>
 	{% else %}
-		<form method="POST" action="/forum/">{% csrf_token %}
-			<label>Username:</label><input type="text" name="username">
-			<label>Password:</label><input type="password" name="password">
-			<input type="submit" value="Log-in">
-			{% if error %}
-			<font color="red" size="3">{{ error }}</font>
-			{% endif %}
-		</form>
+	<a href="/users/login"><span>&nbsp;&nbsp;&nbsp;LOGIN/SIGNUP</span></a>
 	{% endif %}
 {% endblock %}
-{% block sitebody %}
-	<table>
-		{% if profile %}
-			{% if profile.type == "Admin" %}
+{% block contsWrap %}
+	<div id="forumcontent"><br/>
+		<table style="margin-left:-8px;border-style:outset;border-width:5px;">
+			{% if profile %}
 				{% for type in types %}
-					<tr bgcolor="#566D7E">
-						<td colspan=4 style="text-align:center;"><font color="#880000">{{ type }}</font></a></td>
-					</tr>
-					<tr>
-						<td width="250"><center>Forum</center></td>
-						<td width="100"><center>Threads</center></td>
-						<td width="100"><center>Posts</center></td>
-						<td width="200"><center>Last Post</center></td>
-					</tr>
-					{% for subject in type.subject_set.all %}
-						<tr>
-							<td width="250"><a href="{% url forum.views.forum_subject subject.slug %}" style="text-decoration:none"><font color="#880000">{{ subject }}</font></td>
-							<td width="100" style="text-align:center;">{{ subject.topic_set.all.count }}</td>
-							<td width="100" style="text-align:center;">{{ subject.postcount }}</td>
-							<td width="200" style="text-align:center;">{{ subject.lastpostdate }}</td>
-						</tr>
-					{% endfor %}
-				{% endfor %}
-			{% endif %}
-			{% if profile.type == "Staff" %}
-				{% for type in type1 %}
-					<tr bgcolor="#566D7E">
-						<td colspan=4 style="text-align:center;"><font color="#880000">{{ type }}</font></a></td>
-					</tr>
-					<tr>
-						<td width="250"><center>Forum</center></td>
-						<td width="100"><center>Threads</center></td>
-						<td width="100"><center>Posts</center></td>
-						<td width="200"><center>Last Post</center></td>
-					</tr>
-					{% for subject in type.subject_set.all %}
-						<tr>
-							<td width="250"><a href="{% url forum.views.forum_subject subject.slug %}" style="text-decoration:none"><font color="#880000">{{ subject }}</font></td>
-							<td width="100" style="text-align:center;">{{ subject.topic_set.all.count }}</td>
-							<td width="100" style="text-align:center;">{{ subject.postcount }}</td>
-							<td width="200" style="text-align:center;">{{ subject.lastpostdate }}</td>
-						</tr>
-					{% endfor %}
-				{% endfor %}
-				{% for type in type2 %}
-					<tr bgcolor="#566D7E">
-						<td colspan=4 style="text-align:center;"><font color="#880000">{{ type }}</font></a></td>
-					</tr>
-					<tr>
-						<td width="250"><center>Forum</center></td>
-						<td width="100"><center>Threads</center></td>
-						<td width="100"><center>Posts</center></td>
-						<td width="200"><center>Last Post</center></td>
-					</tr>
-					{% for subject in type.subject_set.all %}
-						<tr>
-							<td width="250"><a href="{% url forum.views.forum_subject subject.slug %}" style="text-decoration:none"><font color="#880000">{{ subject }}</font></td>
-							<td width="100" style="text-align:center;">{{ subject.topic_set.all.count }}</td>
-							<td width="100" style="text-align:center;">{{ subject.postcount }}</td>
-							<td width="200" style="text-align:center;">{{ subject.lastpostdate }}</td>
-						</tr>
-					{% endfor %}
-				{% endfor %}
-				{% for type in type3 %}
-					<tr bgcolor="#566D7E">
-						<td colspan=4 style="text-align:center;"><font color="#880000">{{ type }}</font></a></td>
-					</tr>
-					<tr>
-						<td width="250"><center>Forum</center></td>
-						<td width="100"><center>Threads</center></td>
-						<td width="100"><center>Posts</center></td>
-						<td width="200"><center>Last Post</center></td>
-					</tr>
-					{% for subject in type.subject_set.all %}
-						<tr>
-							<td width="250"><a href="{% url forum.views.forum_subject subject.slug %}" style="text-decoration:none"><font color="#880000">{{ subject }}</font></td>
-							<td width="100" style="text-align:center;">{{ subject.topic_set.all.count }}</td>
-							<td width="100" style="text-align:center;">{{ subject.postcount }}</td>
-							<td width="200" style="text-align:center;">{{ subject.lastpostdate }}</td>
-						</tr>
-					{% endfor %}
-				{% endfor %}
-			{% endif %}
-			{% if profile.type == "Member" %}
-				{% for type in type1 %}
-					<tr bgcolor="#566D7E">
-						<td colspan=4 style="text-align:center;"><font color="#880000">{{ type }}</font></a></td>
-					</tr>
-					<tr>
-						<td width="250"><center>Forum</center></td>
-						<td width="100"><center>Threads</center></td>
-						<td width="100"><center>Posts</center></td>
-						<td width="200"><center>Last Post</center></td>
-					</tr>
+				<tr>
+					<td colspan=4 style="text-align:center;"><font color="#880000">{{ type }}</font></a></td>
+				</tr>
+				<tr>
+					<td width="250" background="black"><center>Forum</center></td>
+					<td width="100"><center>Threads</center></td>
+					<td width="100"><center>Posts</center></td>
+					<td width="200"><center>Last Post</center></td>
+				</tr>
 					{% for subject in type.subject_set.all %}
 					<tr>
-						<td width="250"><a href="{% url forum.views.forum_subject subject.slug %}" style="text-decoration:none"><font color="#880000">{{ subject }}</font></td>
-						<td width="100" style="text-align:center;">{{ subject.topic_set.all.count }}</td>
-						<td width="100" style="text-align:center;">{{ subject.postcount }}</td>
-						<td width="200" style="text-align:center;">{{ subject.lastpostdate }}</td>
-					</tr>
-					{% endfor %}
-				{% endfor %}
-				{% for type in type2 %}
-					<tr bgcolor="#566D7E">
-						<td colspan=4 style="text-align:center;"><font color="#880000">{{ type }}</font></a></td>
-					</tr>
-					<tr>
-						<td width="250"><center>Forum</center></td>
-						<td width="100"><center>Threads</center></td>
-						<td width="100"><center>Posts</center></td>
-						<td width="200"><center>Last Post</center></td>
-					</tr>
-					{% for subject in type.subject_set.all %}
-					<tr>
-						<td width="250"><a href="{% url forum.views.forum_subject subject.slug %}" style="text-decoration:none"><font color="#880000">{{ subject }}</font></td>
+						<td width="250" style="text-align:center;"><a href="{% url forum.views.forum_subject subject.slug %}" style="text-decoration:none"><font color="#880000">{{ subject }}</font></td>
 						<td width="100" style="text-align:center;">{{ subject.topic_set.all.count }}</td>
 						<td width="100" style="text-align:center;">{{ subject.postcount }}</td>
 						<td width="200" style="text-align:center;">{{ subject.lastpostdate }}</td>
@@ -138,27 +32,7 @@
 					{% endfor %}
 				{% endfor %}
 			{% endif %}
-		{% else %}
-			{% for type in type1 %}
-					<tr bgcolor="#566D7E">
-						<td colspan=4 style="text-align:center;"><font color="#880000">{{ type }}</font></a></td>
-					</tr>
-					<tr>
-						<td width="250"><center>Forum</center></td>
-						<td width="100"><center>Threads</center></td>
-						<td width="100"><center>Posts</center></td>
-						<td width="200"><center>Last Post</center></td>
-					</tr>
-					{% for subject in type.subject_set.all %}
-					<tr>
-						<td width="250"><a href="{% url forum.views.forum_subject subject.slug %}" style="text-decoration:none"><font color="#880000">{{ subject }}</font></td>
-						<td width="100" style="text-align:center;">{{ subject.topic_set.all.count }}</td>
-						<td width="100" style="text-align:center;">{{ subject.postcount }}</td>
-						<td width="200" style="text-align:center;">{{ subject.lastpostdate }}</td>
-					</tr>
-					{% endfor %}
-				{% endfor %}
-		{% endif %}
-	</table>
+		</table>
+	</div>
 {% endblock %}
 

@@ -15,7 +15,3 @@ class UserProfile_form(forms.Form):
 	gender = forms.CharField(max_length=10, widget=forms.Select(choices=constants.GENDER))
 	picture = forms.ImageField()
 	signature = forms.CharField(widget=forms.Textarea)
-
-class Login_form(forms.Form):
-	username = forms.CharField(max_length="30")
-	password = forms.CharField(widget=forms.PasswordInput)

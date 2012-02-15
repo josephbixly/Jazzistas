@@ -1,17 +1,27 @@
-{% extends "base3.html" %}
-{% block title %}Post Topics{% endblock %}
-{% block postreply %}
-	<form action="" method="POST">{% csrf_token %}
-		<table>
-			<tr>
-				<td>Title:</td><td>{{ form.title }}</td>
-			</tr>
-			<tr>
-				<td>Message:</td><td>{{ form.message }}</td>
-			</tr>
-			<tr>
-				<td></td><td><input type="submit" value="Post Reply"/></td>
-			</tr>
-		</table>
-	</form>
+{% extends "mainbase.html" %}
+{% block title %}Post new thread{% endblock %}
+{% block li3 %}<a class="active" href="/forum/"><span>FORUM</span></a>{% endblock %}
+{% block li5 %}
+	{% if profile %}
+	<a href="/users/logout"><span>&nbsp;&nbsp;&nbsp;LOGOUT&nbsp;<font color="red">{{ profile.user.username }}</font></span></a>
+	{% else %}
+	<a href="/users/login"><span>&nbsp;&nbsp;&nbsp;LOGIN/SIGNUP</span></a>
+	{% endif %}
+{% endblock %}
+{% block contsWrap %}
+	<div id="forumcontent">
+		<form action="" method="POST">{% csrf_token %}
+			<table>
+				<tr>
+					<td>Title:</td><td>{{ form.title }}</td>
+				</tr>
+				<tr>
+					<td>Message:</td><td>{{ form.message }}</td>
+				</tr>
+				<tr>
+					<td></td><td><input type="submit" value="Post Reply"/></td>
+				</tr>
+			</table>
+		</form>
+	</div>
 {% endblock %}

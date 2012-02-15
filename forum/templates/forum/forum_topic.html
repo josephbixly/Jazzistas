@@ -1,8 +1,16 @@
 {% extends "base2.html" %}
-{% block title %}Jazzistas de Davao Forum Page{% endblock %}
-{% block postbody %}
-	<div class="container">		
-		<table>
+{% block title %}{{ topics.title }}{% endblock %}
+{% block li3 %}<a class="active" href="/forum/"><span>FORUM</span></a>{% endblock %}
+{% block li5 %}
+	{% if profile %}
+	<a href="/users/logout"><span>&nbsp;&nbsp;&nbsp;LOGOUT&nbsp;<font color="red">{{ profile.user.username }}</font></span></a>
+	{% else %}
+	<a href="/users/login"><span>&nbsp;&nbsp;&nbsp;LOGIN/SIGNUP</span></a>
+	{% endif %}
+{% endblock %}
+{% block contsWrap %}
+	<div id="container">		
+		<table style="margin-left:-8px;border-style:outset;border-width:5px;">
 			{% if topics %}
 			<tr>
 				<td id="p_date" colspan=2>{{ topics.posted_date }}</td>
@@ -44,8 +52,6 @@
 			</tr>
 			{% endfor %}
 		</table>
-		{% if profile %}
 		<a href="{% url forum.views.post_replies subject_slug topic_slug %}"><img src="{{MEDIA_URL}}/img/reply.gif"></a>
-		{% endif %}
 	</div>
 {% endblock %}
