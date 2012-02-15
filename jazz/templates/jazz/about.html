@@ -1,0 +1,23 @@
+{% extends "mainbase.html" %}
+{% block li5 %}
+	{% if profile %}
+	<font color="red">&nbsp;&nbsp;&nbsp;{{ profile.user.username }}</font>
+	{% else %}
+	<a href="/users/login"><span>&nbsp;&nbsp;&nbsp;LOGIN/SIGNUP</span></a>
+	{% endif %}
+{% endblock %}
+{% block contsWrap %}
+	<div id="aboutcontainer">
+		<br/><p>Picture above shows Boy Katindig and Jazzistas Founder and Chairman Bogs Serrano (center) played and jam at the Kanto Bar the night after their
+		Dec.3 concert. What is Jazzistas de Davao all about? What are its goals? Is it all oriented on music, on jazz? To be more specific, we are a
+		membership framework  in which business owners, artists and enthusiasts are linked thru an alliance. The alliance that we are referring to is about
+		providing local bars and venues with the best and most quality entertainment. We can also be called an agency which provides entertainment
+		manpower. Although the group centers in providing music entertainment especially Jazz, Jazzistas de Davao's true aims however is to unite artists of
+		different fields, race, color, ethnicity or religion to spread the positive energy provided by their artistic hands, making the atmosphere of Davao
+		exiciting, dynamic and active.</p><br/><br/><p style="color: black;">Jazzistas de Davao presents Gigs for life.</p><br/><p style="color: black; font-weight: bold;">MISSION STATEMENT</p><br/>
+		<p style="color:black;">"GIGS for LIFE" is a venture which purpose is to provide a new way for the performing artist to earn a regular income by
+		actively participating in its undertakings & carry out his or her task as a performing artist. "GIGS for LIFE" is created to significantly increase the
+		chance of gaining ground in today's music market place.</p><br/><p>Bands affliated with Jazzistas: Suave Latino, Soulplay, Fusion Juice, Positive Madness,
+		Adrian Gil Band, Boy Katindig Group, Bogs Serrano Group</p>
+	</div>
+{% endblock %}

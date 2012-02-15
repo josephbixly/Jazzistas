@@ -7,7 +7,7 @@ class Profile(models.Model):
     complete_name = models.CharField(max_length=100)
     nickname = models.CharField(max_length=50)
     gender = models.CharField(max_length=50, choices=constants.GENDER)
-    type = models.CharField(max_length=50, choices=constants.USER_TYPES)
+    type = models.CharField(max_length=50, choices=constants.USER_TYPES, blank=True, null=True)
     picture = models.ImageField(upload_to = "%s/profile_pictures" % (constants.UPLOAD_TO), blank=True)
     signature = models.TextField(null=True, blank=True)
     

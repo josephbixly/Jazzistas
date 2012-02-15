@@ -12,4 +12,4 @@ GENDER = (
     ('f','Female'),
 )
 
-UPLOAD_TO = os.path.join(settings.PROJECT_DIR, 'media/guest_data/')
+UPLOAD_TO = 'media/guest_data/'

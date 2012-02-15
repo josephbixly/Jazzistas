@@ -2,11 +2,10 @@
 {% block title %}Jazzistas de Davao Forum Page{% endblock %}
 {% block titlelogin %}
 	JAZZISTAS DE DAVAO FORUM
-	JAZZISTAS DE DAVAO FORUM
 	{% if profile %}
-		<p>Welcome {{ profile.complete_name }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="/forum/logout/" style='text-decoration:none;'>Log-out</a></p>
+		<p>Welcome {{ profile.complete_name }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="/forum/logout/" style="text-decoration:none;">Log-out</a></p>
 	{% else %}
-		<a href="/forum/">Log-in to the main page.</a>
+		<br/><a href="/forum/" style="text-decoration:none; font-size: 15">Log-in to the main page.</a>
 	{% endif %}
 {% endblock %}
 {% block sitebody %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+	Jazzistas de Davao Gallery
+{% endblock %}
+{% block titlelogin %}
+	JAZZISTAS DE DAVAO ARCHIVES and GALLERIES
+	{% if profile %}
+	<p>Welcome {{ profile.complete_name }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="" style="text-decoration:none;">Log-out</a>&nbsp;&nbsp;
+	<a href="/album/view/" style="text-decoration:none; font-size:15">View all galleries</a>&nbsp;&nbsp;&nbsp;
+	<a href="/album/add/" style="text-decoration:none; font-size:15">Add new gallery</a>
+	</p>
+	{% else %}
+	<p>You are currently not logged in.&nbsp;&nbsp;&nbsp;<a href="" style="text-decoration:none;">Log-in</a>&nbsp;&nbsp;
+	<a href="/album/view/" style="text-decoration:none; font-size:15">View all galleries</a>&nbsp;&nbsp;&nbsp;
+	<a href="/album/add/" style="text-decoration:none; font-size:15">Add new gallery</a></p>
+	{% endif %}
+	<br/>
+{% endblock %}
+{% block sitebody %}
+	{% if gallery %}
+		{% for g in gallery %}
+			<a href="{% url album.views.view_gallery g.slug %}" style="text-decoration:none">{{ g.title }}</a><br/>{{ g.desc }}<br/><br/>
+		{% endfor %}
+	{% else %}
+	<p>No albums yet!&nbsp;<a href="/album/add/" style="text-decoration:none; font-size:15">Add albums</a></p>
+	{% endif %}
+{% endblock %}

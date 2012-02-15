@@ -1,0 +1,33 @@
+{% extends "mainbase.html" %}
+{% block title %}Log-in (Member's Page){% endblock %}
+{% block li5 %}
+	<a href="/users/login"><span>&nbsp;&nbsp;&nbsp;LOGIN/SIGNUP</span></a>
+{% endblock %}
+{% block contsWrap %}
+	<div id="logincontainer">
+		MEMBER'S LOG-IN<br/><br/>
+		<form method="POST" action="">{% csrf_token %}
+			<table>
+				<tr>
+					<td><p>Username:</p></td>
+					<td>{{ form.username }}</td>
+				</tr>
+				<tr>
+					<td><p>Password:</p></td>
+					<td>{{ form.password }}</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Log-in"></td>
+				</tr>
+				<tr>
+					<td><td><p style="color:red;">{{ error }}</p></td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>No account yet?&nbsp;<a href="/users/register/" style="text-decoration:none;">Sign up now</a></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+{% endblock %}

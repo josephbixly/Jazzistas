@@ -12,3 +12,4 @@ class GalleryAdmin(admin.ModelAdmin):
 
     
 admin.site.register(Gallery, GalleryAdmin)
+admin.site.register(Image)

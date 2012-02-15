@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block titlelogin %}
+	JAZZISTAS DE DAVAO ARCHIVES and GALLERIES
+	{% if profile %}
+	<p>Welcome {{ profile.complete_name }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="" style="text-decoration:none;">Log-out</a>&nbsp;&nbsp;
+	<a href="/album/view/" style="text-decoration:none; font-size:15">View all galleries</a>&nbsp;&nbsp;&nbsp;
+	<a href="/album/add/" style="text-decoration:none; font-size:15">Add new gallery</a>
+	</p>
+	{% else %}
+	<p>You are currently not logged in.&nbsp;&nbsp;&nbsp;<a href="" style="text-decoration:none;">Log-in</a>&nbsp;&nbsp;
+	<a href="/album/view/" style="text-decoration:none; font-size:15">View all galleries</a>&nbsp;&nbsp;&nbsp;
+	<a href="/album/add/" style="text-decoration:none; font-size:15">Add new gallery</a></p>
+	{% endif %}
+	<br/>
+{% endblock %}
+{% block sitebody %}
+	{% if profile %}
+		{% if photos %}
+			{% for p in photos %}
+			<a href="" style="text-decoration:none;">{{ p.img_name }}</a>&nbsp;&nbsp;
+			{% endfor %}
+			<br/><br/><a href="{% url album.views.upload_picture gallery.slug %}" style="text-decoration:none;">Upload more images</a>
+		{% else %}
+		<p>This album is empty.</p><a href="{% url album.views.upload_picture gallery.slug %}" style="text-decoration:none;">Upload images</a>
+		{% endif %}
+	{% else %}
+		{% if photos %}
+			{% for p in photos %}
+			<a href="" style="text-decoration:none;">{{ p.img_name }}</a>&nbsp;&nbsp;
+			{% endfor %}
+		{% else %}
+		<p>This album is empty.</p><a href="{% url album.views.upload_picture gallery.slug %}" style="text-decoration:none;">Upload images</a>
+		{% endif %}
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "mainbase.html" %}
+{% block title %}Log-in (Member's Page){% endblock %}
+{% block li5 %}
+	<a href="/users/login"><span>&nbsp;&nbsp;&nbsp;LOGIN/SIGNUP</span></a>
+{% endblock %}
+{% block contsWrap %}
+	<div id="regcontainer">
+		REGISTER ACCOUNT<br/><br/>
+		<form method="POST" enctype="multipart/form-data" action="">{% csrf_token %}
+			<table>
+				<tr>
+					<td>Username:</td><td>{{ form.username }}</td>
+				</tr>
+				<tr>
+					<td>Password:</td><td>{{ form.password }}</td>
+				</tr>
+				<tr>
+					<td>Email:</td><td>{{ form.eadd }}</td>
+				</tr>
+				<tr>	
+					<td>Complete Name:</td><td>{{ form.complete_name }}</td>
+				</tr>
+				<tr>
+					<td>Nickname:</td><td>{{ form.nickname }}</td>
+				</tr>
+				<tr>	
+					<td>Gender:</td><td>{{ form.gender }}</td>
+				</tr>
+				<tr>
+					<td>Picture:</td><td>{{ form.picture }}</td>
+				</tr>
+				<tr>
+					<td>Signature:</td><td>{{ form.signature }}</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Register"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+{% endblock %}

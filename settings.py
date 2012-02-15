@@ -109,6 +109,7 @@ INSTALLED_APPS = (
     'blog',
     'album',
     'userprofile',
+    'jazz',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

@@ -18,7 +18,10 @@
 				</td>
 				<td id="messagecontent" class="span-16 last">
 				{% if topics %}
-					{{ topics.message }}
+					{{ topics.message|safe }}
+					{% if topics.posted_by == user %}
+					<br/><a href="{% url forum.views.remove_thread subject_slug topics.slug %}" style="text-decoration:none;">Remove Thread</a>
+					{% endif %}
 				{% endif %}
 				</td>
 			</tr>
@@ -34,6 +37,9 @@
 				</td>
 				<td id="messagecontent" class="span-16 last">
 					{{ post.message|safe }}
+					{% if post.posted_by.get_profile.user == user %}
+					<br/><a href="{% url forum.views.remove_post subject_slug topics.slug post.id %}" style="text-decoration:none">Remove Post</a>
+					{% endif %}
 				</td>
 			</tr>
 			{% endfor %}
